@@ -1,42 +1,14 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
+import { visualizer } from 'rollup-plugin-visualizer'
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [
     react(),
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
-      workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,webp}'],
-        runtimeCaching: [
-          {
-            urlPattern: ({ request }) => request.destination === 'image',
-            handler: 'CacheFirst',
-            options: {
-              cacheName: 'images-cache',
-              expiration: {
-                maxEntries: 50,
-                maxAgeSeconds: 30 * 24 * 60 * 60 // 30 days
-              }
-            }
-          },
-          {
-            urlPattern: /^https:\/\/api\./,
-            handler: 'NetworkFirst',
-            options: {
-              cacheName: 'api-cache',
-              networkTimeoutSeconds: 3,
-              expiration: {
-                maxEntries: 50,
-                maxAgeSeconds: 5 * 60 // 5 minutes
-              }
-            }
-          }
-        ]
-      },
       manifest: {
         name: 'Doctor Clinic PWA',
         short_name: 'Doctor Clinic',
@@ -56,27 +28,25 @@ export default defineConfig({
             src: 'pwa-512x512.svg',
             sizes: '512x512',
             type: 'image/svg+xml'
-          },
-          {
-            src: 'pwa-512x512.svg',
-            sizes: '512x512',
-            type: 'image/svg+xml',
-            purpose: 'any maskable'
           }
         ]
       }
+    }),
+    visualizer({
+      filename: 'dist/bundle-analysis.html',
+      open: true,
+      brotliSize: true,
+      gzipSize: true
     })
   ],
   build: {
-    // Enable minification
     minify: 'terser',
     terserOptions: {
       compress: {
-        drop_console: true, // Remove console.logs in production
+        drop_console: true,
         drop_debugger: true
       }
     },
-    // Enable code splitting
     rollupOptions: {
       output: {
         manualChunks: {
@@ -89,14 +59,6 @@ export default defineConfig({
           ]
         }
       }
-    },
-    // Optimize chunk size
-    chunkSizeWarningLimit: 600,
-    // Source maps for debugging (disable in production)
-    sourcemap: false
-  },
-  // Enable compression
-  server: {
-    compression: true
+    }
   }
 })
