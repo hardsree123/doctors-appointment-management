@@ -1,0 +1,327 @@
+.datetime-selector {
+  margin-bottom: 24px;
+}
+
+.datetime-selector h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 16px 0;
+  border-bottom: 2px solid #8B5CF6;
+  padding-bottom: 8px;
+}
+
+.datetime-selector h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  margin: 0 0 12px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Date Selection */
+.date-section {
+  margin-bottom: 24px;
+}
+
+.date-grid {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 4px 0;
+}
+
+.date-card {
+  min-width: 60px;
+  height: 70px;
+  background: #f9fafb;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+}
+
+.date-card:hover:not(:disabled) {
+  border-color: #8B5CF6;
+  background: #f3f4f6;
+}
+
+.date-card.selected {
+  background: #8B5CF6;
+  border-color: #8B5CF6;
+  color: white;
+}
+
+.date-card.today {
+  border-color: #3B82F6;
+  background: #eff6ff;
+}
+
+.date-card.today.selected {
+  background: #8B5CF6;
+  border-color: #8B5CF6;
+}
+
+.date-card:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.date-number {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.date-day {
+  font-size: 11px;
+  font-weight: 500;
+  margin-top: 2px;
+  opacity: 0.8;
+}
+
+/* Time Selection */
+.time-section {
+  margin-bottom: 24px;
+}
+
+.time-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 8px;
+}
+
+.time-slot {
+  background: #f9fafb;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 12px 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: inherit;
+  text-align: center;
+}
+
+.time-slot:hover:not(:disabled) {
+  border-color: #8B5CF6;
+  background: #f3f4f6;
+}
+
+.time-slot.selected {
+  background: #8B5CF6;
+  border-color: #8B5CF6;
+  color: white;
+}
+
+.time-slot.unavailable {
+  background: #fee2e2;
+  border-color: #fecaca;
+  color: #991b1b;
+  cursor: not-allowed;
+}
+
+.time-slot:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.time-label {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.booking-count {
+  font-size: 11px;
+  opacity: 0.8;
+  font-weight: 500;
+}
+
+.time-slot.selected .booking-count {
+  opacity: 0.9;
+}
+
+/* Loading States */
+.loading-slots {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 8px;
+}
+
+.skeleton-slot {
+  height: 60px;
+  background: #e5e7eb;
+  border-radius: 10px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.no-slots {
+  text-align: center;
+  padding: 24px;
+  color: #6b7280;
+  font-style: italic;
+}
+
+/* Selection Summary */
+.selection-summary {
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 16px;
+}
+
+.selection-summary h4 {
+  color: #0369a1;
+  margin: 0 0 8px 0;
+  font-size: 14px;
+}
+
+.summary-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.summary-date {
+  font-weight: 600;
+  color: #1e40af;
+  font-size: 14px;
+}
+
+.summary-time {
+  color: #3730a3;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .datetime-selector h3 {
+    font-size: 16px;
+  }
+  
+  .date-grid {
+    gap: 6px;
+  }
+  
+  .date-card {
+    min-width: 50px;
+    height: 60px;
+  }
+  
+  .date-number {
+    font-size: 16px;
+  }
+  
+  .date-day {
+    font-size: 10px;
+  }
+  
+  .time-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 6px;
+  }
+  
+  .time-slot {
+    padding: 10px 6px;
+  }
+  
+  .time-label {
+    font-size: 13px;
+  }
+  
+  .booking-count {
+    font-size: 10px;
+  }
+  
+  .selection-summary {
+    padding: 12px;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .datetime-selector h3 {
+    color: #f9fafb;
+    border-bottom-color: #8B5CF6;
+  }
+  
+  .datetime-selector h4 {
+    color: #d1d5db;
+  }
+  
+  .date-card {
+    background: #374151;
+    border-color: #4b5563;
+    color: #f9fafb;
+  }
+  
+  .date-card:hover:not(:disabled) {
+    background: #4b5563;
+  }
+  
+  .date-card.today {
+    background: #1e3a8a;
+    border-color: #3b82f6;
+  }
+  
+  .time-slot {
+    background: #374151;
+    border-color: #4b5563;
+    color: #f9fafb;
+  }
+  
+  .time-slot:hover:not(:disabled) {
+    background: #4b5563;
+  }
+  
+  .time-slot.unavailable {
+    background: #7f1d1d;
+    border-color: #991b1b;
+    color: #fca5a5;
+  }
+  
+  .skeleton-slot {
+    background: #374151;
+  }
+  
+  .no-slots {
+    color: #9ca3af;
+  }
+  
+  .selection-summary {
+    background: #1e293b;
+    border-color: #334155;
+  }
+  
+  .selection-summary h4 {
+    color: #38bdf8;
+  }
+  
+  .summary-date {
+    color: #60a5fa;
+  }
+  
+  .summary-time {
+    color: #a78bfa;
+  }
+}
