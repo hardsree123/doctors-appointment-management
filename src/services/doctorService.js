@@ -60,9 +60,9 @@ class DoctorService {
             total: 6800
           },
           stats: {
-            patients: '456k',
+            patients: '1.2k',
             experience: '8 Years',
-            reviews: '6.8k'
+            reviews: '1.3k'
           },
           about: 'Experienced Ayurveda practitioner specializing in traditional healing methods, sports medicine applications, and yoga therapy. Dedicated to providing holistic healthcare solutions with personalized treatment approaches for optimal wellness.',
           education: [
@@ -71,17 +71,17 @@ class DoctorService {
             'PGDYE - Post Graduate Diploma in Yoga Education'
           ],
           location: {
-            clinic: 'Ayurveda Wellness Center',
-            address: 'Main Street, Health District',
-            city: 'Available for consultations'
+            clinic: 'Itoozhi Ayurveda',
+            address: 'Mayyil P O',
+            city: 'Kannur'
           },
           workingHours: {
-            time: '9:00 AM to 6:00 PM',
+            time: '8:00 AM to 6:00 PM',
             days: 'Monday - Saturday'
           },
           contact: {
-            phone: '+1234567890',
-            email: 'dr.somasree@ayurvedaclinic.com'
+            phone: '+919539581258',
+            email: 'dr.somasree@doctor-mail.com'
           }
         })
       }, 500) // Simulate network delay
@@ -107,7 +107,7 @@ class DoctorService {
           resolve({
             success: true,
             bookingId: `APT-${Date.now()}`,
-            message: 'Appointment booked successfully! Dr. Somasree will contact you soon.',
+            message: 'Appointment booked successfully! You can visit Dr. Somasree for the booked appointment.',
             appointment: {
               ...appointmentData,
               doctorId,
