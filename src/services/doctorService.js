@@ -80,7 +80,7 @@ class DoctorService {
             days: 'Monday - Saturday'
           },
           contact: {
-            phone: '+919539581258',
+            phone: '+911234445552',
             email: 'dr.somasree@doctor-mail.com'
           }
         })
